@@ -10,7 +10,7 @@ if [ -d $ROOTDIRNAME ]
 then
 	echo -n
 else
-	mkdir $ROOTDIRNAMEl
+	mkdir $ROOTDIRNAME
 fi
 
 DIRNAME="version_$HUNS.$TENS$ONES"
