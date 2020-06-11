@@ -1,0 +1,29 @@
+#!/bin/bash
+
+ONES=$(( $1 % 10 ))
+TENS=$(( $1 / 10 ))
+HUNS=$(( $1 / 100 ))
+
+
+ROOTDIRNAME=prev_versions
+if [ -d $ROOTDIRNAME ]
+then
+	echo -n
+else
+	mkdir $ROOTDIRNAMEl
+fi
+
+DIRNAME="version_$HUNS.$TENS$ONES"
+
+if [ -d $ROOTDIRNAME/$DIRNAME ]
+then
+	echo -e "\n!!!Choose an updated version!!!"
+	echo -e "\n\t---current builds---\n"
+	ls $ROOTDIRNAME
+	exit 0
+else
+	mkdir $ROOTDIRNAME/$DIRNAME
+fi
+
+cp *.c $ROOTDIRNAME/$DIRNAME
+cp *.h $ROOTDIRNAME/$DIRNAME

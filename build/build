@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# check for executable and move
+
+if [ $# -le 0 ]
+then
+	echo "Usage: ./build/build <version>"
+	exit 0
+fi
+
+VERSION=$VERSIONCOUNT
+FILENAME=sorter
+
+if [ -x $FILENAME ]
+then
+	mv $FILENAME tmp.tmp
+fi
+
+
+# Attempt to compile
+gcc -Wall -Wextra -Werror -pedantic *.c -o $FILENAME
+chmod u+x $FILENAME
+
+# Clean-up
+if [ -x $FILENAME ]
+then
+if [ -x tmp.tmp ]
+then
+	rm tmp.tmp
+fi
+	./build/version_control $1
+else
+	rm $FILENAME
+	mv tmp.tmp $FILENAME
+	echo -e "\n\t !!!Build failed!!!\n"
+fi
