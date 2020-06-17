@@ -1,5 +1,4 @@
 # 0x1B. C - Sorting algorithms &amp; Big O
-
 This is a repository containing assignments for Holberton School.
 
 |FILES| DESCRIPTIONS|
