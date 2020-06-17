@@ -13,6 +13,10 @@ void quick_sort(int *array, size_t size)
 /**
  * quicksort - sorts an array of integers in ascending order
  * using the Quick sort algorithm
+ * @a: array
+ * @low: low
+ * @hi: high
+ * @size: size of array
  */
 void quicksort(int *a, int low, int hi, size_t size)
 {
@@ -28,7 +32,11 @@ void quicksort(int *a, int low, int hi, size_t size)
 
 /**
  * partition - implementing the Lomuto partition scheme
- * Return:
+ * @a: array
+ * @low: low
+ * @hi: high
+ * @size: size of array
+ * Return: index at which swap happens
  */
 int partition(int *a, int low, int hi, size_t size)
 {
@@ -37,9 +45,9 @@ int partition(int *a, int low, int hi, size_t size)
 
 	pivot = a[hi];
 	i = low;
-	for (j = low; j < hi; j+=1)
+	for (j = low; j < hi; j += 1)
 	{
-		if(a[j] < pivot)
+		if (a[j] < pivot)
 		{
 			if (a[i] != a[j])
 			{
@@ -48,14 +56,14 @@ int partition(int *a, int low, int hi, size_t size)
 				a[j] = temp;
 				swap = TRUE;
 			}
-			i+=1;
+			i += 1;
 		}
 	}
 	if (swap)
 	{
 		print_array(a, size);
 	}
-	if(a[i] == a[hi])
+	if (a[i] == a[hi])
 		return (i);
 	temp = a[i];
 	a[i] = a[hi];

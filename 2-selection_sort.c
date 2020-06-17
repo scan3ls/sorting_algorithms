@@ -7,11 +7,12 @@
  */
 void selection_sort(int *array, size_t size)
 {
-	size_t x,y, temp;
+	size_t x, y, temp;
 
 	for (x = 0; x < size - 1; x++)
 	{
 		size_t Min = x;
+
 		for (y = x + 1; y < size; y++)
 		{
 			if (array[y] < array[Min])
@@ -24,7 +25,7 @@ void selection_sort(int *array, size_t size)
 		{
 			temp = array[x];
 			array[x] = array[Min];
-		        array[Min] = temp;
+			array[Min] = temp;
 			print_array(array, size);
 		}
 	}
