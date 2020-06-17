@@ -21,13 +21,8 @@ void quicksort(int *a, int low, int hi, size_t size)
 	if (low < hi)
 	{
 		p = partition(a, low, hi, size);
-		if (low != p + 1 && hi != p - 1)
-		{
-			quicksort(a, low, p - 1, size);
-			quicksort(a, p + 1, hi, size);
-		}
-		else
-			quicksort(a, low, hi, size);
+		quicksort(a, low, p - 1, size);
+		quicksort(a, p + 1, hi, size);
 	}
 }
 
@@ -46,26 +41,26 @@ int partition(int *a, int low, int hi, size_t size)
 	{
 		if(a[j] < pivot)
 		{
-			temp = a[i];
-			a[i] = a[j];
-			a[j] = temp;
+			if (a[i] != a[j])
+			{
+				temp = a[i];
+				a[i] = a[j];
+				a[j] = temp;
+				swap = TRUE;
+			}
 			i+=1;
-			swap = TRUE;
 		}
 	}
-	if(swap)
+	if (swap)
 	{
 		print_array(a, size);
-		swap = FALSE;
 	}
-	if(i == hi && low == hi)
+	if(a[i] == a[hi])
 		return (i);
 	temp = a[i];
 	a[i] = a[hi];
 	a[hi] = temp;
 	swap = TRUE;
-	printf("%d, %d\n", a[i], a[hi]);
-	if (swap)
-		print_array(a, size);
+	print_array(a, size);
 	return (i);
 }
