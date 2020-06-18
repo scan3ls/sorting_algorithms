@@ -41,7 +41,6 @@ void quicksort(int *a, int low, int hi, size_t size)
 int partition(int *a, int low, int hi, size_t size)
 {
 	int pivot, temp, i, j;
-	bool swap = FALSE;
 
 	pivot = a[hi];
 	i = low;
@@ -54,21 +53,16 @@ int partition(int *a, int low, int hi, size_t size)
 				temp = a[i];
 				a[i] = a[j];
 				a[j] = temp;
-				swap = TRUE;
+				print_array(a, size);
 			}
 			i += 1;
 		}
-	}
-	if (swap)
-	{
-		print_array(a, size);
 	}
 	if (a[i] == a[hi])
 		return (i);
 	temp = a[i];
 	a[i] = a[hi];
 	a[hi] = temp;
-	swap = TRUE;
 	print_array(a, size);
 	return (i);
 }
